@@ -32,10 +32,18 @@ from src.results import (
 )
 from src.app import seed_sample_data
 
+template_dir = PROJECT_ROOT / "templates"
+if not template_dir.exists():
+    template_dir = Path.cwd() / "templates"
+
+static_dir = PROJECT_ROOT / "static"
+if not static_dir.exists():
+    static_dir = Path.cwd() / "static"
+
 app = Flask(
     __name__,
-    template_folder=str(PROJECT_ROOT / "templates"),
-    static_folder=str(PROJECT_ROOT / "static")
+    template_folder=str(template_dir),
+    static_folder=str(static_dir)
 )
 
 
